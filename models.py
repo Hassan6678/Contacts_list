@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['Sqlalchemy_database_uri'] = "sqlite:///book.sqlite"
+app.config['Sqlalchemy_database_uri'] = "sqlite:///list.sqlite"
 
 db = SQLAlchemy(app)
 
