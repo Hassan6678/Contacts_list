@@ -2,19 +2,20 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['Sqlalchemy_database_uri'] = "sqlite:///list.sqlite"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///list.sqlite"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
+database = SQLAlchemy(app)
 
-class Contact(db.Model):
+class Contact(database.Model):
 
     __tablename__ = 'contacts'
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(50), nullable=True)
-    firstname = db.Column(db.String(50), nullable=True)
-    lastname = db.Column(db.String(50), nullable=False)
-    phone = db.Column(db.String(20), nullable=True, unique=False)
+    id = database.Column(database.Integer, primary_key=True)
+    username = database.Column(database.String(50), nullable=True)
+    firstname = database.Column(database.String(50), nullable=True)
+    lastname = database.Column(database.String(50), nullable=False)
+    phone = database.Column(database.String(20), nullable=True, unique=False)
 
     def __repr__(self):
         return '<Contacts %r>' % self.firstname
