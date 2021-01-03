@@ -1,4 +1,4 @@
-from models import database, Contact
+from models import database, Contact, Email
 from faker import Factory
 
 fake = Factory.create()
@@ -16,5 +16,15 @@ for num in range(10):
     # Save in database
     my_contact = Contact(username = username, firstname=firstname, lastname=lastname, phone=phone)
     database.session.add(my_contact)
+
+database.session.commit()
+
+for num in range(10):
+
+    email = fake.email()
+    # Save in database
+    my_email= Email(email=email)
+
+    database.session.add(my_email)
 
 database.session.commit()

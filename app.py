@@ -28,7 +28,7 @@ def new_contact():
         database.session.add(my_contact)
         try:
             database.session.commit()
-            flash("Contact created.", 'successfully')
+            flash("Contact created.", 'Success')
             return redirect(url_for('contacts'))
         except:
             database.session.rollback()
@@ -61,10 +61,10 @@ def contacts():
 
 @app.route("/search")
 def search():
-    name_search = request.args.get('name')
+    name_search = request.args.get('username')
 
     all_contacts = Contact.query.filter(
-        Contact.name.contains(name_search)
+        Contact.username.contains(name_search)
         ).order_by(Contact.firstname).all()
     return render_template('web/contacts.html', contacts=all_contacts)
 
