@@ -24,13 +24,3 @@ for num in range(10):
     database.session.add(my_email)
 
 database.session.commit()
-
-# for num in range(10):
-#
-#     email = fake.email()
-#     # Save in database
-#     my_email= Email(email=email)
-#
-#     database.session.add(my_email)
-#
-# database.session.commit()
