@@ -31,7 +31,7 @@ class Email(database.Model):
     __tablename__ = 'e_mail'
 
     id = database.Column(database.Integer, primary_key=True)
-    email = database.Column(database.String(80), nullable=False, unique=True)
+    email = database.Column(database.String(80), nullable=True, unique=True)
     contact_id = database.Column(database.Integer, database.ForeignKey("contacts.id"),nullable=False)
 
     def __repr__(self):
